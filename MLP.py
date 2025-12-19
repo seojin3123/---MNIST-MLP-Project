@@ -278,7 +278,6 @@ ax.legend()
 ax.set_ylim(0, 100) # Y축 범위를 0~100%로 고정
 ax.grid(axis='y', linestyle='--', alpha=0.7) # 가로 격자 추가
 
-# 막대 위에 정확도 숫자 표시 (자동 라벨링)
 for rect in rects1 + rects2:
     height = rect.get_height()
     ax.annotate(f'{height:.1f}%',
