@@ -148,7 +148,7 @@ class NeuralNetwork:
         n = len(training_data)
         
         for i in range(epochs):
-            # 데이터를 무작위로 섞음 (매우 중요!)
+            # 데이터를 무작위로 섞음
             np.random.shuffle(training_data)
             
             # 미니배치로 잘라냄
@@ -168,10 +168,8 @@ class NeuralNetwork:
         test_data = [(x.reshape(784, 1), y.reshape(10, 1)) for x, y in zip(X, y)]
         test_results = []
         for x, y in test_data:
-            # 1. 순전파로 예측값 계산
             output = self.feedforward(x)
             
-            # 2. 가장 높은 확률을 가진 인덱스(0~9)
             prediction = np.argmax(output) 
             actual = np.argmax(y)
             
@@ -198,9 +196,6 @@ class NeuralNetwork:
             # 시각화
             plt.subplot(1, num_samples, i + 1)
             plt.imshow(x.reshape(28, 28), cmap='gray')
-            
-            # 제목에 예측값과 실제값 표시
-            # 맞으면 초록색, 틀리면 빨간색
             color = 'green' if prediction == actual else 'red'
             plt.title(f"Pred: {prediction}\nTrue: {actual}", color=color)
             plt.axis('off')
@@ -288,3 +283,4 @@ for rect in rects1 + rects2:
 
 plt.tight_layout()
 plt.show()
+
